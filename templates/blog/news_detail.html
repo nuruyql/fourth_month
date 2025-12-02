@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.your_name }}</title>
+</head>
+<body>
+
+<h1>{{ post.your_name }}</h1>
+
+<p><strong>Day of birth:</strong> {{ post.day_birth }}</p>
+<p><strong>Height:</strong> {{ post.height }} cm</p>
+<p><strong>Weight:</strong> {{ post.weight }} kg</p>
+<p><strong>Regret:</strong> {{ post.regret_moment }}</p>
+<p><strong>Created:</strong> {{ post.created_at }}</p>
+
+{% if post.photo %}
+    <img src="{{ post.photo.url }}" width="300">
+{% endif %}
+
+<br><br>
+<a href="/news_list/">Back</a>
+
+</body>
+</html>
