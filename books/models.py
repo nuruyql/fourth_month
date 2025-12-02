@@ -4,17 +4,6 @@ from django.db import models
 
 bad_history = """ssentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lor"""
 
-# Create your models here.
-class AboutYou(models.Model):
-    your_name = models.CharField(verbose_name="enter your name",max_length=100)
-    day_birth = models.IntegerField(verbose_name="enter your day birth",max_length=2)
-    height = models.IntegerField(verbose_name="enter your height")
-    weight = models.IntegerField(verbose_name="enter youw weight")
-    photo = models.ImageField(upload_to='news/', verbose_name='загрузите основное фото',null=True)
-    regret_moment = models.TextField(verbose_name="ener your moment",max_length=500,default=bad_history)
-    created_at = models.DateTimeField(auto_now_add=True)
-    
-
 class AboutYou(models.Model):
     your_name = models.CharField(verbose_name="enter your name", max_length=100)
     day_birth = models.IntegerField(verbose_name="enter your day birth")
@@ -35,4 +24,5 @@ class AboutYou(models.Model):
 
     def __str__(self):
         return self.your_name
+    
 
