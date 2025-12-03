@@ -2,16 +2,16 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>{{ post.your_name }}</title>
+    <title>{{ post.author }}</title>
 </head>
 <body>
 
-<h1>{{ post.your_name }}</h1>
+<h1>{{ post.author }}</h1>
 
-<p><strong>Day of birth:</strong> {{ post.day_birth }}</p>
-<p><strong>Height:</strong> {{ post.height }} cm</p>
-<p><strong>Weight:</strong> {{ post.weight }} kg</p>
-<p><strong>Regret:</strong> {{ post.regret_moment }}</p>
+<p><strong>Day of made:</strong> {{ post.day_made }}</p>
+<p><strong>pages:</strong> {{ post.pages }} </p>
+<p><strong>jenres:</strong> {{ post.jenres }} </p>
+<p><strong>Discription:</strong> {{ post.discription }}</p>
 <p><strong>Created:</strong> {{ post.created_at }}</p>
 
 {% if post.photo %}

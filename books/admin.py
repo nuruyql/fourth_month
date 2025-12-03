@@ -5,5 +5,5 @@ from .models import AboutYou
 @admin.register(AboutYou)
 class NewsAboutYouAdmin(admin.ModelAdmin):
     list_display = ('id',  'created_at','photo')
-    search_fields = ('photo','your_name','age')
+    search_fields = ('jenre','author','day_made')
     list_filter = ('created_at',)
