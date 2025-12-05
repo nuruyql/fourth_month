@@ -6,50 +6,24 @@ from .models import AboutYou
 
 
 
-
-
 def newsPostView(request):
-    posts = AboutYou.objects.all().order_by('-created_at')
-    return render(request, 'blog/news_list.html', {'posts': posts})
-
+    if request.method == 'GET':
+        posts = AboutYou.objects.all().order_by('-created_at')
+        return render(
+            request,
+            'books/news_list.html',
+            {'posts': posts}
+        )
 
 def newsPostDetailView(request, id):
-    post = get_object_or_404(AboutYou, id=id)
-    return render(request, 'blog/news_detail.html', {'post': post})
+    if request.method == 'GET':
+        post = get_object_or_404(AboutYou, id=id)
+        return render(
+            request,
+            'books/news_detail.html',
+            {'post': post}
+        )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Create your views here.
 def WritersView(request):
     if request.method == 'GET':
         return HttpResponse(
@@ -57,7 +31,7 @@ def WritersView(request):
             "Jane Austen, Ernest Hemingway, Agatha Christie, J.K. Rowling, "
             "Gabriel García Márquez, Fyodor Dostoevsky"
         )
-    
+
 def QuotesView(request):
     quotes = [
         "“To be, or not to be, that is the question.” – William Shakespeare",
@@ -71,6 +45,7 @@ def QuotesView(request):
         html += f"<li>{q}</li>"
     html += '</ul>'
     return HttpResponse(html)
+
 def CurrentTimeView(request):
     current_time = datetime.now()
     if request.method == 'GET':

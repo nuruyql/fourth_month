@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <title>{{ post.author }}</title>
-</head>
-<body>
-
+{%  load static %}
+{% include '../header.html'%}
 <h1>{{ post.author }}</h1>
 
 <p><strong>Day of made:</strong> {{ post.day_made }}</p>
@@ -14,12 +8,20 @@
 <p><strong>Discription:</strong> {{ post.discription }}</p>
 <p><strong>Created:</strong> {{ post.created_at }}</p>
 
+
 {% if post.photo %}
     <img src="{{ post.photo.url }}" width="300">
 {% endif %}
 
+{% for i in post.review.all %}
+    <h3>Review: {{ i.text }}</h3>
+    <span>{{ i.marks }}</span>
+    <p>{{ i.created_at }}</p>
+    <hr>
+{% empty %}
+    <p>No reviews yet.</p>
+{% endfor %}
 <br><br>
 <a href="/news_list/">Back</a>
 
-</body>
-</html>
+{% include '../footer.html'%}

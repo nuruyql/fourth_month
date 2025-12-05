@@ -1,0 +1,22 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Header & Footer Example</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+<header class="main-header">
+  <h1>My Website</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="{% url 'writerss' %}">News</a>
+    <a href="#">Contact</a>
+  </nav>
+</header>
+
+
+
