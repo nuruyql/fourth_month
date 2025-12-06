@@ -1,0 +1,17 @@
+{% include '../header.html'%}
+
+<h1>Продукты категории: {{ category.name }}</h1>
+
+<a href="{% url 'category_list' %}">← Назад к категориям</a>
+
+<ul>
+    {% for product in products %}
+        <li>
+            {{ product.name }} — {{ product.price }} сом
+        </li>
+    {% empty %}
+        <li>В этой категории нет товаров.</li>
+    {% endfor %}
+</ul>
+
+{% include '../footer.html'%}
