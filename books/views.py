@@ -1,4 +1,4 @@
-from django.shortcuts import render,get_object_or_404
+from django.shortcuts import render,get_object_or_404,redirect
 from django.http import HttpResponse
 from datetime import datetime
 from .models import Books
@@ -6,10 +6,9 @@ from .forms import BookForm
 
 
 
-
 def CreBook(request):
     if request.method == 'POST':
-        form = BookForm(request.POST,request.FILES)
+        form = BookForm(request.POST,request.FILES) 
         if form.is_valid():
             form.save()
             return HttpResponse('Good boy')
@@ -43,7 +42,34 @@ def BooksList(request):
             'books/books_list.html',
             {'books' : books_list}
         )
+    
+def BookDel(request,id):
+    if request.method == 'GET':
+        book_id = get_object_or_404(Books,id=id)
+        book_id.delete()
+        return redirect('book_list')
 
+def BookUpdate(request,id):
+    book_id = get_object_or_404(Books,id=id)
+    if request.method == 'POST':
+            form = BookForm(request.POST,instance=book_id)
+            if form.is_valid():
+                form.save()
+                return redirect('book_list')
+            
+
+    else:
+        form = BookForm(instance=book_id)
+    
+
+    return render(
+        request,
+        'books/up_books.html',
+        {'form': form,
+         'book_id':book_id
+         }
+
+    )
 
 def newsPostView(request):
     if request.method == 'GET':

@@ -14,9 +14,9 @@
     <li>{{i.photo}}</li>
     <li>{{i.created_at}}</li>
 
-     <button><a href="/student_list/{{ i.id }}/">Читать далее</a></button>
-     <button><a href="/student_list/{{ i.id }}/update/">Изменить данные</a></button> 
-     <button><a href="/student_list/{{ i.id }}/delete/">Удалить данные</a></button>
+     <a href="{% url 'book_detail' i.id %}">Читать далее</a>
+     <a href="{% url 'book_update' i.id %}">Изменить данные</a> 
+     <a href="{% url 'delete' i.id %}">Удалить данные</a>
     {%endfor%}
 </ul>
 
