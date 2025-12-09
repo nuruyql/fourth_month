@@ -10,8 +10,9 @@ def CreBook(request):
     if request.method == 'POST':
         form = BookForm(request.POST,request.FILES) 
         if form.is_valid():
+
             form.save()
-            return HttpResponse('Good boy')
+            return redirect('book_list')
     else:
         form = BookForm()
         return render(
