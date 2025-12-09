@@ -1,14 +1,53 @@
 from django.shortcuts import render,get_object_or_404
 from django.http import HttpResponse
 from datetime import datetime
-from .models import AboutYou
+from .models import Books
+from .forms import BookForm
 
 
+
+
+def CreBook(request):
+    if request.method == 'POST':
+        form = BookForm(request.POST,request.FILES)
+        if form.is_valid():
+            form.save()
+            return HttpResponse('Good boy')
+    else:
+        form = BookForm()
+        return render(
+            request,
+            'books/create_books.html',
+            {
+                'form' : form
+             }
+            
+        )
+
+def BooksDetail(request,id):
+
+    book_id = get_object_or_404(Books,id=id)
+    return render(
+            request,
+            'books/books_detail.html',
+            {
+                'book_id' : book_id
+            }
+        )
+
+def BooksList(request):
+    if  request.method == 'GET':
+        books_list = Books.objects.all().order_by('-id')
+        return render(
+            request,
+            'books/books_list.html',
+            {'books' : books_list}
+        )
 
 
 def newsPostView(request):
     if request.method == 'GET':
-        posts = AboutYou.objects.all().order_by('-created_at')
+        posts = Books.objects.all().order_by('-created_at')
         return render(
             request,
             'books/news_list.html',
@@ -17,7 +56,7 @@ def newsPostView(request):
 
 def newsPostDetailView(request, id):
     if request.method == 'GET':
-        post = get_object_or_404(AboutYou, id=id)
+        post = get_object_or_404(Books, id=id)
         return render(
             request,
             'books/news_detail.html',

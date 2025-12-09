@@ -1,0 +1,36 @@
+{% load static%}
+{% include '../header.html'%}
+
+
+
+
+
+<h1>List of books</h1>
+
+
+<ul>
+    {% for i in books%}
+    <li>{{i.author}}</li>
+    <li>{{i.photo}}</li>
+    <li>{{i.created_at}}</li>
+
+     <button><a href="/student_list/{{ i.id }}/">Читать далее</a></button>
+     <button><a href="/student_list/{{ i.id }}/update/">Изменить данные</a></button> 
+     <button><a href="/student_list/{{ i.id }}/delete/">Удалить данные</a></button>
+    {%endfor%}
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% include '../footer.html'%}

@@ -1,0 +1,24 @@
+{%load static%}
+{% include '../header.html'%}
+
+
+<ul>
+    <li>{{book_id.author}}</li>
+    <li>{{book_id.day_made}}</li>
+    <li>{{book_id.pages}}</li>
+
+    <li>{{book_id.jenre}}</li>
+    <li>{{book_id.photo}}</li>
+    <li>{{book_id.description}}</li>
+    <li>{{book_id.created_at}}</li>
+    <button><a href="{{url 'book_list'}}"></a>back to list</button>
+</ul>
+
+
+
+
+
+
+
+
+{% include 'footer.html'%}

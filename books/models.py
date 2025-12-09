@@ -9,7 +9,7 @@ from django.core.validators import (
 bad_history = """ssentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lor"""
 
 
-class AboutYou(models.Model):
+class Books(models.Model):
     author = models.CharField(verbose_name="enter author this book", max_length=100, default='unknown')
     day_made = models.IntegerField(verbose_name="when was created this book", default=2000)
     pages = models.IntegerField(verbose_name="enter how many pages", default=200)
@@ -38,7 +38,7 @@ class AboutYou(models.Model):
 
 class Reviews(models.Model):
     choose = models.ForeignKey(
-        AboutYou,
+        Books,
         on_delete=models.CASCADE,
         related_name='review',
         verbose_name='book',
@@ -74,3 +74,5 @@ class Reviews(models.Model):
 
     def __str__(self):
         return f'{self.choose} — {self.marks}'
+
+
