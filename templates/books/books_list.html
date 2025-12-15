@@ -11,7 +11,7 @@
 <ul>
     {% for i in books%}
     <li>{{i.author}}</li>
-    <li>{{i.photo}}</li>
+    <li><img src="{{ i.photo.url }}" alt="{{ i.author }}" width="200"></li>
     <li>{{i.created_at}}</li>
 
      <a href="{% url 'book_detail' i.id %}">Читать далее</a>

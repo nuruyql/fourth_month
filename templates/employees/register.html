@@ -1,0 +1,28 @@
+{% load static%}
+{% include '../header.html' %}
+
+
+
+<h1>Регистрация на прием работы</h1>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Зарегистрироваться</button>
+</form>
+<a href="{% url 'login' %}">Войти</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% include '../footer.html' %}

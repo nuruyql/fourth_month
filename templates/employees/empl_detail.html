@@ -1,0 +1,44 @@
+{% load static%}
+{% include '../header.html'%}
+
+
+
+<h1>Подробно: {{ person.user.username }}</h1>
+
+  <hr>
+
+  <h2>Основные данные</h2>
+  <ul>
+    <li><b>Логин:</b> {{ person.user.username }}</li>
+    <li><b>Телефон:</b> {{ person.phone }}</li>
+    <li><b>Дата рождения:</b> {{ person.birth_date }}</li>
+    <li><b>Паспорт ID:</b> {{ person.passport_id }}</li>
+    <li><b>Адрес:</b> {{ person.address }}</li>
+    <li><b>Город:</b> {{ person.city }}</li>
+  </ul>
+
+  <h2>Образование и опыт</h2>
+  <ul>
+    <li><b>Образование:</b> {{ person.education }}</li>
+    <li><b>Специализация:</b> {{ person.specialization }}</li>
+    <li><b>Опыт (лет):</b> {{ person.experience_years }}</li>
+  </ul>
+
+  <h2>Желаемая работа</h2>
+  <ul>
+    <li><b>Должность:</b> {{ person.desired_position }}</li>
+    <li><b>Зарплата:</b> {{ person.desired_salary }}</li>
+  </ul>
+
+  <h2>О себе</h2>
+  <p>{{ person.about|linebreaksbr }}</p>
+
+  <hr>
+
+  <a href="{% url 'applicants' %}">← Назад к списку</a>
+
+
+
+
+
+{% include '../footer.html'%}

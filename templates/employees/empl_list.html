@@ -1,0 +1,11 @@
+<h1>Все зарегистрированные</h1>
+
+<ul>
+  {% for p in people %}
+    <li>
+      <a href="{% url 'applicant_detail' p.id %}">
+        {{ p.user.username }} — {{ p.desired_position }}
+      </a>
+    </li>
+  {% endfor %}
+</ul>
